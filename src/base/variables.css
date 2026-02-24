@@ -13,19 +13,6 @@
   --neutral-900: #0f172a;
   --neutral-950: #020617;
 
-  /* --- Primary Brand Palette (Defaults to Jellyfin Blue) --- */
-  /* Palette files will override these specific variables */
-  --primary-50: #f0f9ff;
-  --primary-100: #e0f2fe;
-  --primary-200: #bae6fd;
-  --primary-300: #7dd3fc;
-  --primary-400: #38bdf8;
-  --primary-500: #00a4dc;
-  --primary-600: #0284c7;
-  --primary-700: #0369a1;
-  --primary-800: #075985;
-  --primary-900: #0c4a6e;
-
   /* --- Semantic UI Tokens --- */
   /* We map our neutral and primary variables to functional names */
   --bg-main: var(--neutral-950);
