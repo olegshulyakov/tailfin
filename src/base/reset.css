@@ -1,0 +1,42 @@
+/* Deep reset of Jellyfin's legacy styling */
+
+/* Remove default background images and gradients */
+.backgroundContainer,
+.mainDrawer,
+.skinTarget {
+  background-color: var(--bg-main) !important;
+  background-image: none !important;
+}
+
+/* Strip default borders and rounding from legacy cards */
+.cardContent,
+.cardImageContainer {
+  border-radius: var(--radius-md) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Force modern typography across the app */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.paper-icon-button-light {
+  font-family: var(--font-main), ui-sans-serif, system-ui, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Clean up the header/top-bar */
+.skinHeader {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove default blue focus rings for a custom look later */
+:focus {
+  outline: none !important;
+}
