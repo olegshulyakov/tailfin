@@ -1,0 +1,35 @@
+/* Media Cards (Posters, Thumbs) */
+.card {
+  @apply transition-transform duration-200 ease-out;
+}
+
+/* Rounded corners and overflow for the image container */
+.cardImageContainer {
+  @apply rounded-lg border-0 shadow-sm !important;
+  background-color: var(--neutral-800) !important;
+}
+
+/* The Hover/Focus Effect */
+.card:focus,
+.card:hover {
+  transform: scale(1.04);
+  z-index: 10;
+}
+
+/* Hide the ugly default Jellyfin "selection" overlay */
+.cardSelectionOverlay {
+  display: none !important;
+}
+
+/* Refined Text below posters */
+.cardText {
+  @apply px-1 pt-2 !important;
+}
+
+.cardText-first {
+  @apply text-sm font-medium text-white !important;
+}
+
+.cardText-secondary {
+  @apply text-xs text-neutral-400 !important;
+}

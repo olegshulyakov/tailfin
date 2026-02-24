@@ -1,0 +1,40 @@
+/* --- Top Header --- */
+.skinHeader {
+  /* Using Tailwind's alpha modifier (/80) on our CSS variable doesn't work directly,
+       so we rely on a solid surface color or backdrop blur */
+  background-color: rgba(15, 23, 42, 0.8) !important; /* neutral-900 with opacity */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  @apply border-b border-neutral-800 transition-all duration-300 !important;
+}
+
+/* --- Sidebar (Main Drawer) --- */
+.mainDrawer {
+  background-color: var(--bg-main) !important;
+  @apply border-r border-neutral-800 !important;
+}
+
+/* Sidebar Links */
+.navMenuOption {
+  @apply rounded-md mx-3 my-1 transition-colors duration-200 !important;
+}
+
+/* Hover state for links */
+.navMenuOption:hover {
+  background-color: var(--neutral-800) !important;
+  color: var(--text-main) !important;
+}
+
+/* Active/Selected State */
+.navMenuOption-selected {
+  background-color: var(--accent) !important;
+  color: white !important;
+}
+
+/* Sidebar Icons */
+.navMenuOptionIcon {
+  @apply transition-colors duration-200 !important;
+}
+.navMenuOption-selected .navMenuOptionIcon {
+  color: white !important;
+}

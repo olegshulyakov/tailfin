@@ -1,0 +1,24 @@
+/* --- Login Page --- */
+#loginPage {
+  @apply flex items-center justify-center min-h-screen bg-cover bg-center !important;
+  background-color: var(--bg-main) !important;
+}
+
+/* The actual login box */
+#loginPage .readOnlyContent,
+#loginPage .formContainer {
+  @apply max-w-md w-full mx-auto p-8 rounded-2xl border border-neutral-800 shadow-2xl !important;
+  background-color: rgba(15, 23, 42, 0.7) !important; /* Neutral 900 with transparency */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Style the Jellyfin Logo on the login screen */
+#loginPage h1 {
+  @apply text-3xl font-bold text-center text-white mb-8 tracking-tight !important;
+}
+
+/* Adjust button spacing on login */
+#loginPage .button-submit {
+  @apply w-full mt-6 py-3 text-lg !important;
+}

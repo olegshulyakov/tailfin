@@ -1,0 +1,17 @@
+/* Dialogs and Modals */
+.dialog {
+  @apply rounded-xl border-0 shadow-2xl !important;
+  background-color: var(--bg-surface) !important;
+  backdrop-filter: blur(20px);
+}
+
+/* Header inside modals */
+.formDialogHeader {
+  @apply border-b border-neutral-800 !important;
+}
+
+/* Blur the background when a modal is open */
+.dialogBackdrop {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+}

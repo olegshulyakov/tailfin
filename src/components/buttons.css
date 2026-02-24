@@ -1,0 +1,36 @@
+/* Standard Buttons */
+.button-flat,
+.button-accent,
+.emby-button {
+  @apply rounded-md font-semibold transition-all duration-150 !important;
+}
+
+/* Primary Action (Play, Resume) */
+.button-accent {
+  background-color: var(--accent) !important;
+  color: white !important;
+}
+
+.button-accent:hover {
+  background-color: var(--accent-hover) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary Actions */
+.button-flat {
+  @apply bg-neutral-800 text-neutral-100 !important;
+}
+
+.button-flat:hover {
+  @apply bg-neutral-700 !important;
+}
+
+/* Icon Buttons (Like, More, Play icon on cards) */
+.paper-icon-button-light {
+  @apply transition-colors duration-150 !important;
+}
+
+.paper-icon-button-light:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--accent) !important;
+}

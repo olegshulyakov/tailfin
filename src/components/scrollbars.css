@@ -1,0 +1,25 @@
+/* --- Global Custom Scrollbars (WebKit) --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-700);
+  @apply rounded-full border-2 border-solid !important;
+  border-color: var(--bg-main); /* Creates a faux-padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-500);
+}
+
+/* Firefox compatibility */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-700) var(--bg-main);
+}

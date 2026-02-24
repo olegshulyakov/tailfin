@@ -1,0 +1,24 @@
+/* --- Row / Section Titles --- */
+.sectionTitle {
+  @apply text-xl md:text-2xl font-bold tracking-tight text-white mb-4 flex items-center !important;
+}
+
+/* The "More >" button next to section titles */
+.sectionTitleTextButton {
+  @apply text-sm font-medium text-neutral-400 ml-4 transition-colors duration-200 !important;
+}
+.sectionTitleTextButton:hover {
+  color: var(--accent) !important;
+}
+
+/* Tabs (e.g., Movies, Shows, Suggested on detail pages) */
+.emby-tab-button {
+  @apply text-neutral-400 font-medium transition-colors duration-200 border-b-2 border-transparent pb-2 !important;
+}
+.emby-tab-button:hover {
+  color: var(--text-main) !important;
+}
+.emby-tab-button.emby-tab-button-active {
+  color: var(--text-main) !important;
+  border-color: var(--accent) !important;
+}
