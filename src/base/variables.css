@@ -39,6 +39,17 @@
   --accent: var(--primary-500);
   --accent-hover: var(--primary-600);
 
+  /* --- Z-Index Scale --- */
+  --z-base: 1;
+  --z-hover: 10;
+  --z-drawer: 100;
+  --z-header: 200;
+  --z-modal: 500;
+  --z-osd: 1000;
+
+  /* --- Accessibility --- */
+  --focus-ring: 2px solid var(--accent);
+
   /* --- Shared Constants --- */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;

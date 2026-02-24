@@ -12,8 +12,16 @@
 /* The Hover/Focus Effect */
 .card:focus,
 .card:hover {
-  transform: scale(1.04);
-  z-index: 10;
+  @apply scale-105 !important;
+  z-index: var(--z-hover) !important;
+}
+
+/* Accessibility: Visible focus ring for keyboard users */
+.card:focus-visible {
+  @apply scale-105 !important;
+  outline: var(--focus-ring) !important;
+  outline-offset: 4px;
+  z-index: var(--z-hover) !important;
 }
 
 /* Hide the ugly default Jellyfin "selection" overlay */

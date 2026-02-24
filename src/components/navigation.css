@@ -38,3 +38,11 @@
 .navMenuOption-selected .navMenuOptionIcon {
   color: white !important;
 }
+
+/* Performance Fallback for low-end devices / specific user settings */
+@media (prefers-reduced-transparency: reduce) {
+    .skinHeader, .dialog, .osdControls {
+        @apply backdrop-blur-none !important;
+        background-color: var(--bg-surface) !important;
+    }
+}
