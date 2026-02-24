@@ -26,6 +26,10 @@ module.exports = {
                     950: 'var(--primary-950)',
                 },
             },
+            zIndex: {
+                'hover': 'var(--z-hover)',
+                'modal': 'var(--z-modal)',
+            },
         },
     },
     plugins: [],
