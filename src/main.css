@@ -1,0 +1,26 @@
+/* 1. Variables (Load these first so Tailwind can see them) */
+@import "./base/variables.css";
+
+/* 2. Tailwind Base (Default resets) */
+@import "tailwindcss/base";
+
+/* 3. Custom Resets (Overrides Tailwind's base and Jellyfin's defaults) */
+@import "./base/reset.css";
+
+/* 4. Tailwind Components */
+@import "tailwindcss/components";
+
+/* 5. Custom Component Overrides (Your Tailfin UI) */
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/inputs.css";
+@import "./components/item-details.css";
+@import "./components/login.css";
+@import "./components/modals.css";
+@import "./components/navigation.css";
+@import "./components/player.css";
+@import "./components/scrollbars.css";
+@import "./components/typography.css";
+
+/* 6. Tailwind Utilities (MUST BE LAST so they can override anything above) */
+@import "tailwindcss/utilities";
