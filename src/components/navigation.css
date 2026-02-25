@@ -1,22 +1,31 @@
 /* --- Top Header --- */
-.skinHeader {
-  /* Using Tailwind's alpha modifier (/80) on our CSS variable doesn't work directly,
-       so we rely on a solid surface color or backdrop blur */
-  background-color: rgba(15, 23, 42, 0.8) !important; /* neutral-900 with opacity */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  @apply border-b border-neutral-800 transition-all duration-300 !important;
+.skinHeader, .skinHeader.skinHeader-withBackground {
+  background-color: var(--bg-main) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  @apply border-b border-transparent transition-all duration-300 !important;
+}
+
+@media (max-width: 100em) {
+.withSectionTabs .headerTop {
+  padding-bottom: 0 !important;
+}
 }
 
 /* --- Sidebar (Main Drawer) --- */
 .mainDrawer {
-  background-color: var(--bg-main) !important;
-  @apply border-r border-neutral-800 !important;
+  background-color: var(--neutral-900) !important;
+  @apply border-r border-neutral-900 !important;
 }
 
 /* Sidebar Links */
 .navMenuOption {
   @apply rounded-md mx-3 my-1 transition-colors duration-200 !important;
+}
+[dir=ltr] .navMenuOption, [dir=rtl] .navMenuOption {
+  @apply px-4 py-2 !important;
 }
 
 /* Hover state for links */
@@ -28,7 +37,7 @@
 /* Active/Selected State */
 .navMenuOption-selected {
   background-color: var(--accent) !important;
-  color: white !important;
+  color: var(--text-main) !important;
 }
 
 /* Sidebar Icons */
@@ -36,7 +45,7 @@
   @apply transition-colors duration-200 !important;
 }
 .navMenuOption-selected .navMenuOptionIcon {
-  color: white !important;
+  color: var(--text-main) !important;
 }
 
 /* Performance Fallback for low-end devices / specific user settings */
@@ -45,4 +54,12 @@
         @apply backdrop-blur-none !important;
         background-color: var(--bg-surface) !important;
     }
+}
+
+/* Header Buttons Hover (Search, Cast, Profile) */
+.headerButton {
+  @apply transition-colors duration-200 rounded-full !important;
+}
+.headerButton:hover {
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
 }

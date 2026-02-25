@@ -5,17 +5,30 @@
 }
 
 /* The actual login box */
-#loginPage .readOnlyContent,
-#loginPage .formContainer {
+#loginPage > div {
   @apply max-w-md w-full mx-auto p-8 rounded-2xl border border-neutral-800 shadow-2xl !important;
-  background-color: rgba(15, 23, 42, 0.7) !important; /* Neutral 900 with transparency */
+  background-color: color-mix(in srgb, var(--bg-surface) 70%, transparent) !important;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 }
 
+/* Fix width of user profile cards to prevent them collapsing */
+#loginPage #divUsers {
+  @apply flex flex-row flex-wrap justify-center gap-4 w-full mt-4 !important;
+}
+
+#loginPage .squareCard {
+  @apply w-[30%] min-w-[80px] flex-none bg-transparent !important;
+}
+
+#loginPage .squareCard .cardBox {
+  @apply m-0 !important;
+}
+
 /* Style the Jellyfin Logo on the login screen */
 #loginPage h1 {
-  @apply text-3xl font-bold text-center text-white mb-8 tracking-tight !important;
+  @apply text-3xl font-bold text-center mb-8 tracking-tight !important;
+  color: var(--text-main) !important;
 }
 
 /* Adjust button spacing on login */

@@ -3,7 +3,8 @@
 .emby-textarea,
 .emby-select {
   background-color: var(--bg-input) !important;
-  @apply border border-neutral-700 rounded-md text-white transition-all duration-200 px-3 py-2 !important;
+  @apply border border-neutral-700 rounded-md transition-all duration-200 px-3 py-2 !important;
+  color: var(--text-main) !important;
 }
 
 /* Focus State (When a user clicks into a text box) */
@@ -33,5 +34,5 @@
 
 /* The circular thumb on the toggle */
 .paper-toggle-button-checked .toggleThumb {
-  background-color: white !important;
+  background-color: var(--text-main) !important;
 }

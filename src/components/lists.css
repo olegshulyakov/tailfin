@@ -1,0 +1,13 @@
+/* --- List Items (Episodes, Search Results, Settings) --- */
+.listItem {
+  @apply px-2 py-0 transition-colors duration-200 !important;
+}
+
+.listItem:hover {
+  @apply rounded-xl !important;
+  background-color: var(--neutral-800) !important;
+}
+
+.listItem-border {
+  @apply p-2 border-b rounded-none border-neutral-800 !important;
+}

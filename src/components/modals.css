@@ -12,6 +12,6 @@
 
 /* Blur the background when a modal is open */
 .dialogBackdrop {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: color-mix(in srgb, var(--bg-main) 70%, transparent) !important;
   backdrop-filter: blur(4px);
 }

@@ -8,7 +8,7 @@
 /* Primary Action (Play, Resume) */
 .button-accent {
   background-color: var(--accent) !important;
-  color: white !important;
+  color: var(--text-main) !important;
 }
 
 .button-accent:hover {
@@ -31,6 +31,6 @@
 }
 
 .paper-icon-button-light:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
   color: var(--accent) !important;
 }

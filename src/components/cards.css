@@ -6,7 +6,6 @@
 /* Rounded corners and overflow for the image container */
 .cardImageContainer {
   @apply rounded-lg border-0 shadow-sm !important;
-  background-color: var(--neutral-800) !important;
 }
 
 /* The Hover/Focus Effect */
@@ -24,6 +23,12 @@
   z-index: var(--z-hover) !important;
 }
 
+/* Style regular card boxes lacking a full visual image with a dark background and rounded corners */
+.cardBox:not(.visualCardBox) .cardPadder {
+  @apply rounded-xl !important;
+  background-color: var(--neutral-800) !important;
+}
+
 /* Hide the ugly default Jellyfin "selection" overlay */
 .cardSelectionOverlay {
   display: none !important;
@@ -35,9 +40,30 @@
 }
 
 .cardText-first {
-  @apply text-sm font-medium text-white !important;
+  @apply text-sm font-medium !important;
+  color: var(--text-main) !important;
 }
 
 .cardText-secondary {
-  @apply text-xs text-neutral-400 !important;
+  @apply text-xs text-neutral-400 pt-0 !important;
+}
+
+/* --- Card Indicators (Unwatched count, play progress) --- */
+.countIndicator, .playedIndicator {
+  background: color-mix(in srgb, var(--primary-500) 90%, transparent) !important;
+  color: var(--text-main) !important;
+  border-color: color-mix(in srgb, var(--primary-500) 10%, transparent) !important;
+  @apply text-xs shadow-md border font-medium !important;
+}
+.playedIndicator {
+  background: var(--accent) !important;
+}
+
+/* Progress Bars on Cards */
+.itemProgressBar {
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
+  height: 4px !important;
+}
+.itemProgressBarForeground {
+  background-color: var(--accent) !important;
 }

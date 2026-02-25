@@ -1,25 +1,24 @@
 /* --- Global Custom Scrollbars (WebKit) --- */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neutral-700);
-  @apply rounded-full border-2 border-solid !important;
-  border-color: var(--bg-main); /* Creates a faux-padding effect */
+  background: rgba(255, 255, 255, 0.15);
+  @apply rounded-full !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-500);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Firefox compatibility */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--neutral-700) var(--bg-main);
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }

@@ -576,7 +576,7 @@ h6,
 /* Primary Action (Play, Resume) */
 .button-accent {
   background-color: var(--accent) !important;
-  color: white !important;
+  color: var(--text-main) !important;
 }
 .button-accent:hover {
   background-color: var(--accent-hover) !important;
@@ -600,7 +600,7 @@ h6,
   transition-duration: 150ms !important;
 }
 .paper-icon-button-light:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
   color: var(--accent) !important;
 }
 /* Media Cards (Posters, Thumbs) */
@@ -617,7 +617,6 @@ h6,
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-  background-color: var(--neutral-800) !important;
 }
 /* The Hover/Focus Effect */
 .card:focus,
@@ -636,6 +635,11 @@ h6,
   outline-offset: 4px;
   z-index: var(--z-hover) !important;
 }
+/* Style regular card boxes lacking a full visual image with a dark background and rounded corners */
+.cardBox:not(.visualCardBox) .cardPadder{
+  border-radius: 0.75rem !important;
+  background-color: var(--neutral-800) !important;
+}
 /* Hide the ugly default Jellyfin "selection" overlay */
 .cardSelectionOverlay {
   display: none !important;
@@ -650,14 +654,38 @@ h6,
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
   font-weight: 500 !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+  color: var(--text-main) !important;
 }
 .cardText-secondary{
+  padding-top: 0px !important;
   font-size: 0.75rem !important;
   line-height: 1rem !important;
   --tw-text-opacity: 1 !important;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
+}
+/* --- Card Indicators (Unwatched count, play progress) --- */
+.countIndicator, .playedIndicator {
+  background: color-mix(in srgb, var(--primary-500) 90%, transparent) !important;
+  color: var(--text-main) !important;
+  border-color: color-mix(in srgb, var(--primary-500) 10%, transparent) !important;
+  border-width: 1px !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  font-weight: 500 !important;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+.playedIndicator {
+  background: var(--accent) !important;
+}
+/* Progress Bars on Cards */
+.itemProgressBar {
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
+  height: 4px !important;
+}
+.itemProgressBarForeground {
+  background-color: var(--accent) !important;
 }
 /* --- Text Inputs, Textareas, and Dropdowns --- */
 .emby-input,
@@ -672,11 +700,10 @@ h6,
   padding-right: 0.75rem !important;
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
   transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 200ms !important;
+  color: var(--text-main) !important;
 }
 /* Focus State (When a user clicks into a text box) */
 .emby-input:focus,
@@ -703,7 +730,7 @@ h6,
 }
 /* The circular thumb on the toggle */
 .paper-toggle-button-checked .toggleThumb {
-  background-color: white !important;
+  background-color: var(--text-main) !important;
 }
 /* --- Item Details Hero & Backdrop --- */
 .itemBackdrop {
@@ -718,6 +745,14 @@ h6,
   z-index: 10 !important;
   margin-top: -3rem !important;
 }
+/* Remove default dark ribbon backgrounds that crop the poster and look dated */
+.detailPagePrimaryContainer,
+.detailRibbon {
+  background: transparent !important;
+}
+.detailPageSecondaryContainer {
+  background: transparent !important;
+}
 /* --- Typography (Title & Overview) --- */
 .itemName.infoText{
   margin-bottom: 0.5rem !important;
@@ -725,8 +760,6 @@ h6,
   line-height: 2.5rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 @media (min-width: 768px){
   .itemName.infoText{
@@ -735,7 +768,8 @@ h6,
   }
 }
 .itemName.infoText {
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  color: var(--text-main) !important;
+  text-shadow: 0 2px 8px color-mix(in srgb, var(--bg-main) 80%, transparent);
 }
 .itemOverview{
   margin-top: 1rem !important;
@@ -755,12 +789,9 @@ h6,
   gap: 0.5rem !important;
 }
 /* Style the individual metadata items as modern "pills" */
-.itemMiscInfo-primary{
+.itemMiscInfo .mediaInfoItem{
   border-radius: 9999px !important;
   border-width: 1px !important;
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(51 65 85 / var(--tw-border-opacity, 1)) !important;
-  background-color: rgb(30 41 59 / 0.8) !important;
   padding-left: 0.75rem !important;
   padding-right: 0.75rem !important;
   padding-top: 0.25rem !important;
@@ -768,10 +799,44 @@ h6,
   font-size: 0.75rem !important;
   line-height: 1rem !important;
   font-weight: 600 !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(226 232 240 / var(--tw-text-opacity, 1)) !important;
   --tw-backdrop-blur: blur(4px) !important;
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) !important;
+  background-color: color-mix(in srgb, var(--bg-surface) 80%, transparent) !important;
+  color: var(--text-main) !important;
+  border-color: var(--neutral-700) !important;
+}
+/* --- Action Buttons (Play, Shuffle, Trailer, etc.) --- */
+.detailButton{
+  margin-right: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  border-radius: 0.75rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  font-weight: 500 !important;
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 200ms !important;
+  background-color: color-mix(in srgb, var(--neutral-800) 80%, transparent) !important;
+  color: var(--text-main) !important;
+}
+.detailButton:hover {
+  background-color: var(--neutral-700) !important;
+  transform: translateY(-2px);
+}
+.btnPlay.detailButton {
+  background-color: var(--accent) !important;
+  color: var(--text-main) !important;
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+.btnPlay.detailButton:hover {
+  background-color: var(--accent-hover) !important;
 }
 /* --- Cast & Crew --- */
 .personCard{
@@ -786,7 +851,7 @@ h6,
 /* Make cast images perfect circles */
 .personCard .cardImageContainer{
   aspect-ratio: 1 / 1 !important;
-  border-radius: 9999px !important;
+  border-radius: 0.75rem !important;
   border-width: 1px !important;
   --tw-border-opacity: 1 !important;
   border-color: rgb(30 41 59 / var(--tw-border-opacity, 1)) !important;
@@ -796,9 +861,54 @@ h6,
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
-.personCard .cardText{
+.personCard .cardText-first{
   margin-top: 0.5rem !important;
   text-align: center !important;
+  font-weight: 600 !important;
+}
+.personCard .cardText-secondary{
+  margin-top: 0.25rem !important;
+  text-align: center !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  --tw-text-opacity: 1 !important;
+  color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
+}
+/* --- Inline Text Links (Genres, Tags, External Links) --- */
+.detailPageSecondaryContainer a,
+.itemExternalLinks a{
+  background-color: rgb(30 41 59 / 0.5) !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  font-weight: 600 !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+  color: var(--text-main) !important;
+  text-decoration: none !important;
+}
+.detailPageSecondaryContainer a:hover,
+.itemExternalLinks a:hover {}
+/* --- List Items (Episodes, Search Results, Settings) --- */
+.listItem{
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 200ms !important;
+}
+.listItem:hover{
+  border-radius: 0.75rem !important;
+  background-color: var(--neutral-800) !important;
+}
+.listItem-border{
+  border-radius: 0px !important;
+  border-bottom-width: 1px !important;
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(30 41 59 / var(--tw-border-opacity, 1)) !important;
+  padding: 0.5rem !important;
 }
 /* --- Login Page --- */
 #loginPage{
@@ -811,8 +921,7 @@ h6,
   background-color: var(--bg-main) !important;
 }
 /* The actual login box */
-#loginPage .readOnlyContent,
-#loginPage .formContainer{
+#loginPage > div{
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100% !important;
@@ -825,9 +934,28 @@ h6,
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
-  background-color: rgba(15, 23, 42, 0.7) !important; /* Neutral 900 with transparency */
+  background-color: color-mix(in srgb, var(--bg-surface) 70%, transparent) !important;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+}
+/* Fix width of user profile cards to prevent them collapsing */
+#loginPage #divUsers{
+  margin-top: 1rem !important;
+  display: flex !important;
+  width: 100% !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+}
+#loginPage .squareCard{
+  width: 30% !important;
+  min-width: 80px !important;
+  flex: none !important;
+  background-color: transparent !important;
+}
+#loginPage .squareCard .cardBox{
+  margin: 0px !important;
 }
 /* Style the Jellyfin Logo on the login screen */
 #loginPage h1{
@@ -837,8 +965,7 @@ h6,
   line-height: 2.25rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+  color: var(--text-main) !important;
 }
 /* Adjust button spacing on login */
 #loginPage .button-submit{
@@ -867,29 +994,33 @@ h6,
 }
 /* Blur the background when a modal is open */
 .dialogBackdrop {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: color-mix(in srgb, var(--bg-main) 70%, transparent) !important;
   backdrop-filter: blur(4px);
 }
 /* --- Top Header --- */
-.skinHeader {
-  /* Using Tailwind's alpha modifier (/80) on our CSS variable doesn't work directly,
-       so we rely on a solid surface color or backdrop blur */
-  background-color: rgba(15, 23, 42, 0.8) !important; /* neutral-900 with opacity */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+.skinHeader, .skinHeader.skinHeader-withBackground {
+  background-color: var(--bg-main) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   border-bottom-width: 1px !important;
-  --tw-border-opacity: 1 !important;
-  border-color: rgb(30 41 59 / var(--tw-border-opacity, 1)) !important;
+  border-color: transparent !important;
   transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 300ms !important;
 }
+@media (max-width: 100em) {
+.withSectionTabs .headerTop {
+  padding-bottom: 0 !important;
+}
+}
 /* --- Sidebar (Main Drawer) --- */
 .mainDrawer {
-  background-color: var(--bg-main) !important;
+  background-color: var(--neutral-900) !important;
   border-right-width: 1px !important;
   --tw-border-opacity: 1 !important;
-  border-color: rgb(30 41 59 / var(--tw-border-opacity, 1)) !important;
+  border-color: rgb(15 23 42 / var(--tw-border-opacity, 1)) !important;
 }
 /* Sidebar Links */
 .navMenuOption{
@@ -902,6 +1033,12 @@ h6,
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 200ms !important;
 }
+[dir=ltr] .navMenuOption, [dir=rtl] .navMenuOption{
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
 /* Hover state for links */
 .navMenuOption:hover {
   background-color: var(--neutral-800) !important;
@@ -910,7 +1047,7 @@ h6,
 /* Active/Selected State */
 .navMenuOption-selected {
   background-color: var(--accent) !important;
-  color: white !important;
+  color: var(--text-main) !important;
 }
 /* Sidebar Icons */
 .navMenuOptionIcon{
@@ -919,7 +1056,7 @@ h6,
   transition-duration: 200ms !important;
 }
 .navMenuOption-selected .navMenuOptionIcon {
-  color: white !important;
+  color: var(--text-main) !important;
 }
 /* Performance Fallback for low-end devices / specific user settings */
 @media (prefers-reduced-transparency: reduce) {
@@ -929,10 +1066,20 @@ h6,
         background-color: var(--bg-surface) !important;
   }
 }
+/* Header Buttons Hover (Search, Cast, Profile) */
+.headerButton{
+  border-radius: 9999px !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 200ms !important;
+}
+.headerButton:hover {
+  background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
+}
 /* --- Player OSD Backgrounds --- */
 .osdControls {
   /* Dark, blurred glass background for bottom controls */
-  background: rgba(2, 6, 23, 0.7) !important; /* Neutral 950 with opacity */
+  background: color-mix(in srgb, var(--bg-main) 70%, transparent) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top-width: 1px !important;
@@ -942,7 +1089,7 @@ h6,
 }
 /* Top bar (Where the title is displayed during playback) */
 .videoOsdTopControls {
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), transparent) !important;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg-main) 90%, transparent), transparent) !important;
   padding-top: 1rem !important;
 }
 /* --- Progress / Seek Bar --- */
@@ -952,11 +1099,11 @@ h6,
 }
 /* The unplayed portion of the bar */
 .mdl-slider-background-upper {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: color-mix(in srgb, var(--text-main) 20%, transparent) !important;
 }
 /* The drag thumb/handle */
 .mdl-slider::-webkit-slider-thumb {
-  background: white !important;
+  background: var(--text-main) !important;
   --tw-scale-x: 1.1 !important;
   --tw-scale-y: 1.1 !important;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
@@ -990,12 +1137,11 @@ h6,
 }
 /* --- Player Buttons --- */
 .osdControls .paper-icon-button-light{
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
   opacity: 0.7 !important;
   transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 200ms !important;
+  color: var(--text-main) !important;
 }
 .osdControls .paper-icon-button-light:hover{
   --tw-scale-x: 1.1 !important;
@@ -1007,38 +1153,33 @@ h6,
 }
 /* --- Global Custom Scrollbars (WebKit) --- */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px !important;
-  border-width: 2px !important;
-  border-style: solid !important;
-  border-color: var(--bg-main); /* Creates a faux-padding effect */
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-500);
+  background: rgba(255, 255, 255, 0.3);
 }
 /* Firefox compatibility */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--neutral-700) var(--bg-main);
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 /* --- Row / Section Titles --- */
 .sectionTitle{
-  margin-bottom: 1rem !important;
+  margin-bottom: 0.5rem !important;
   display: flex !important;
   align-items: center !important;
   font-size: 1.25rem !important;
   line-height: 1.75rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.025em !important;
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 @media (min-width: 768px){
   .sectionTitle{
@@ -1046,9 +1187,12 @@ h6,
     line-height: 2rem !important;
   }
 }
+div:not(.sectionTitleContainer-cards) > .sectionTitle-cards{
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
 /* The "More >" button next to section titles */
 .sectionTitleTextButton{
-  margin-left: 1rem !important;
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
   font-weight: 500 !important;
@@ -1057,28 +1201,63 @@ h6,
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 200ms !important;
+  margin-left: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  padding: 0 !important;
 }
 .sectionTitleTextButton:hover {
   color: var(--accent) !important;
+  background: transparent !important;
 }
-/* Tabs (e.g., Movies, Shows, Suggested on detail pages) */
+.sectionTitleTextButton>.material-icons{
+  margin-bottom: 0.25rem !important;
+}
+/* --- Navigation Tabs (e.g., Home, Favorites) --- */
+/* Unified button group container */
+.emby-tabs{
+  display: inline-flex !important;
+  border-radius: 9999px !important;
+  padding: 0.25rem !important;
+  background-color: color-mix(in srgb, var(--neutral-800) 50%, transparent) !important;
+  width: -moz-max-content !important;
+  width: max-content !important;
+  margin: 0.25rem auto !important;
+}
+/* Ensure the slider inside behaves as a flex container */
+.emby-tabs-slider{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.25rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* the button items inside */
 .emby-tab-button{
-  border-bottom-width: 2px !important;
-  border-color: transparent !important;
-  padding-bottom: 0.5rem !important;
+  border-radius: 9999px !important;
+  border-width: 0px !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
   font-weight: 500 !important;
   --tw-text-opacity: 1 !important;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 200ms !important;
+  background: transparent !important;
 }
 .emby-tab-button:hover {
   color: var(--text-main) !important;
 }
+/* Highlight for the active tab */
 .emby-tab-button.emby-tab-button-active {
   color: var(--text-main) !important;
-  border-color: var(--accent) !important;
+  background-color: var(--neutral-700) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 /* 6. Tailwind Utilities (MUST BE LAST so they can override anything above) */
 .relative{
@@ -1086,6 +1265,9 @@ h6,
 }
 .z-10{
   z-index: 10;
+}
+.m-0{
+  margin: 0px;
 }
 .mx-3{
   margin-left: 0.75rem;
@@ -1102,11 +1284,11 @@ h6,
 .-mt-12{
   margin-top: -3rem;
 }
+.mb-1{
+  margin-bottom: 0.25rem;
+}
 .mb-2{
   margin-bottom: 0.5rem;
-}
-.mb-4{
-  margin-bottom: 1rem;
 }
 .mb-6{
   margin-bottom: 1.5rem;
@@ -1114,8 +1296,11 @@ h6,
 .mb-8{
   margin-bottom: 2rem;
 }
-.ml-4{
-  margin-left: 1rem;
+.mr-2{
+  margin-right: 0.5rem;
+}
+.mt-1{
+  margin-top: 0.25rem;
 }
 .mt-2{
   margin-top: 0.5rem;
@@ -1129,20 +1314,32 @@ h6,
 .flex{
   display: flex;
 }
+.inline-flex{
+  display: inline-flex;
+}
 .aspect-square{
   aspect-ratio: 1 / 1;
 }
 .min-h-screen{
   min-height: 100vh;
 }
+.w-\[30\%\]{
+  width: 30%;
+}
 .w-full{
   width: 100%;
+}
+.min-w-\[80px\]{
+  min-width: 80px;
 }
 .max-w-4xl{
   max-width: 56rem;
 }
 .max-w-md{
   max-width: 28rem;
+}
+.flex-none{
+  flex: none;
 }
 .scale-105{
   --tw-scale-x: 1.05;
@@ -1162,6 +1359,9 @@ h6,
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.flex-row{
+  flex-direction: row;
+}
 .flex-wrap{
   flex-wrap: wrap;
 }
@@ -1171,8 +1371,17 @@ h6,
 .justify-center{
   justify-content: center;
 }
+.gap-1{
+  gap: 0.25rem;
+}
 .gap-2{
   gap: 0.5rem;
+}
+.gap-4{
+  gap: 1rem;
+}
+.rounded{
+  border-radius: 0.25rem;
 }
 .rounded-2xl{
   border-radius: 1rem;
@@ -1186,6 +1395,9 @@ h6,
 .rounded-md{
   border-radius: 0.375rem;
 }
+.rounded-none{
+  border-radius: 0px;
+}
 .rounded-xl{
   border-radius: 0.75rem;
 }
@@ -1195,23 +1407,14 @@ h6,
 .border-0{
   border-width: 0px;
 }
-.border-2{
-  border-width: 2px;
-}
 .border-b{
   border-bottom-width: 1px;
-}
-.border-b-2{
-  border-bottom-width: 2px;
 }
 .border-r{
   border-right-width: 1px;
 }
 .border-t{
   border-top-width: 1px;
-}
-.border-solid{
-  border-style: solid;
 }
 .border-neutral-700{
   --tw-border-opacity: 1;
@@ -1224,6 +1427,10 @@ h6,
 .border-neutral-800\/50{
   border-color: rgb(30 41 59 / 0.5);
 }
+.border-neutral-900{
+  --tw-border-opacity: 1;
+  border-color: rgb(15 23 42 / var(--tw-border-opacity, 1));
+}
 .border-transparent{
   border-color: transparent;
 }
@@ -1235,8 +1442,11 @@ h6,
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
 }
-.bg-neutral-800\/80{
-  background-color: rgb(30 41 59 / 0.8);
+.bg-neutral-800\/50{
+  background-color: rgb(30 41 59 / 0.5);
+}
+.bg-transparent{
+  background-color: transparent;
 }
 .bg-cover{
   background-size: cover;
@@ -1247,6 +1457,12 @@ h6,
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
+}
+.p-1{
+  padding: 0.25rem;
+}
+.p-2{
+  padding: 0.5rem;
 }
 .p-8{
   padding: 2rem;
@@ -1263,9 +1479,21 @@ h6,
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-0{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-1\.5{
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
 }
 .py-2{
   padding-top: 0.5rem;
@@ -1275,11 +1503,11 @@ h6,
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
-.pb-2{
-  padding-bottom: 0.5rem;
-}
 .pb-4{
   padding-bottom: 1rem;
+}
+.pt-0{
+  padding-top: 0px;
 }
 .pt-2{
   padding-top: 0.5rem;
@@ -1337,10 +1565,6 @@ h6,
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity, 1));
 }
-.text-neutral-200{
-  --tw-text-opacity: 1;
-  color: rgb(226 232 240 / var(--tw-text-opacity, 1));
-}
 .text-neutral-300{
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity, 1));
@@ -1348,10 +1572,6 @@ h6,
 .text-neutral-400{
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1));
-}
-.text-white{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 .antialiased{
   -webkit-font-smoothing: antialiased;
