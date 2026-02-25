@@ -1,7 +1,7 @@
 /* 1. Variables (Load these first so Tailwind can see them) */
 @import "./base/variables.css";
-@import "./palettes/jellyfin.css";
-@import "./fonts/inter.css";
+@import "./palettes/theme-jellyfin.css";
+@import "./fonts/font-inter.css";
 
 /* 2. Tailwind Base (Default resets) */
 @import "tailwindcss/base";
