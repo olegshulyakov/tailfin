@@ -17,21 +17,19 @@
 
 /* Accessibility: Visible focus ring for keyboard users */
 .card:focus-visible {
-  @apply scale-105 !important;
+  @apply scale-105 outline-offset-4 !important;
   outline: var(--focus-ring) !important;
-  outline-offset: 4px;
   z-index: var(--z-hover) !important;
 }
 
 /* Style regular card boxes lacking a full visual image with a dark background and rounded corners */
 .cardBox:not(.visualCardBox) .cardPadder {
-  @apply rounded-xl !important;
-  background-color: var(--neutral-800) !important;
+  @apply rounded-xl bg-neutral-800 !important;
 }
 
 /* Hide the ugly default Jellyfin "selection" overlay */
 .cardSelectionOverlay {
-  display: none !important;
+  @apply hidden !important;
 }
 
 /* Refined Text below posters */
@@ -62,7 +60,7 @@
 /* Progress Bars on Cards */
 .itemProgressBar {
   background-color: color-mix(in srgb, var(--text-main) 10%, transparent) !important;
-  height: 4px !important;
+  @apply h-1 !important;
 }
 .itemProgressBarForeground {
   background-color: var(--accent) !important;

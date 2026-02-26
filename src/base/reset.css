@@ -11,9 +11,8 @@
 /* Strip default borders and rounding from legacy cards */
 .cardContent,
 .cardImageContainer {
+  @apply rounded-md border-none shadow-none !important;
   border-radius: var(--radius-md) !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 /* Force modern typography across the app */
@@ -26,17 +25,15 @@ h5,
 h6,
 .paper-icon-button-light {
   font-family: var(--font-main), ui-sans-serif, system-ui, sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply antialiased;
 }
 
 /* Clean up the header/top-bar */
 .skinHeader {
-  background-color: transparent !important;
-  box-shadow: none !important;
+  @apply bg-transparent shadow-none !important;
 }
 
 /* Remove default blue focus rings for a custom look later */
 :focus {
-  outline: none !important;
+  @apply outline-none !important;
 }

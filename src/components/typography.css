@@ -9,16 +9,12 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 
 /* The "More >" button next to section titles */
 .sectionTitleTextButton {
-  @apply text-sm font-medium text-neutral-400 transition-colors duration-200 !important;
-  margin-left: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  @apply text-sm font-medium text-neutral-400 transition-colors duration-200 ml-0 bg-transparent p-0 !important;
   color: var(--text-main) !important;
-  padding: 0 !important;
 }
 .sectionTitleTextButton:hover {
+  @apply bg-transparent !important;
   color: var(--accent) !important;
-  background: transparent !important;
 }
 .sectionTitleTextButton>.material-icons {
   @apply mb-1 !important;
@@ -27,23 +23,18 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 /* --- Navigation Tabs (e.g., Home, Favorites) --- */
 /* Unified button group container */
 .emby-tabs {
-  @apply inline-flex p-1 rounded-full !important;
+  @apply inline-flex p-1 rounded-full w-max my-1 mx-auto !important;
   background-color: color-mix(in srgb, var(--neutral-800) 50%, transparent) !important;
-  width: max-content !important;
-  margin: 0.25rem auto !important;
 }
 
 /* Ensure the slider inside behaves as a flex container */
 .emby-tabs-slider {
-  @apply flex items-center justify-center gap-1 !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  @apply flex items-center justify-center gap-1 m-0 p-0 !important;
 }
 
 /* the button items inside */
 .emby-tab-button {
-  @apply font-medium text-neutral-400 transition-all duration-200 rounded-full px-4 py-1.5 border-0 !important;
-  background: transparent !important;
+  @apply font-medium text-neutral-400 transition-all duration-200 rounded-full px-4 py-1.5 border-0 bg-transparent !important;
 }
 
 .emby-tab-button:hover {
@@ -52,7 +43,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 
 /* Highlight for the active tab */
 .emby-tab-button.emby-tab-button-active {
+  @apply shadow-sm !important;
   color: var(--text-main) !important;
   background-color: var(--neutral-700) !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }

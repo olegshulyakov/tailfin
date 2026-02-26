@@ -14,10 +14,10 @@
 /* Remove default dark ribbon backgrounds that crop the poster and look dated */
 .detailPagePrimaryContainer,
 .detailRibbon {
-  background: transparent !important;
+  @apply bg-transparent !important;
 }
 .detailPageSecondaryContainer {
-  background: transparent !important;
+  @apply bg-transparent !important;
 }
 
 /* --- Typography (Title & Overview) --- */
@@ -53,7 +53,7 @@
 
 .detailButton:hover {
   background-color: var(--neutral-700) !important;
-  transform: translateY(-2px);
+  @apply -translate-y-0.5 !important;
 }
 
 .btnPlay.detailButton {
@@ -72,7 +72,7 @@
 }
 
 .personCard:hover {
-  transform: scale(1.05);
+  @apply scale-105;
 }
 
 /* Make cast images perfect circles */

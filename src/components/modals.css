@@ -1,8 +1,7 @@
 /* Dialogs and Modals */
 .dialog {
-  @apply rounded-xl border-0 shadow-2xl !important;
+  @apply rounded-xl border-0 shadow-2xl backdrop-blur-xl !important;
   background-color: var(--bg-surface) !important;
-  backdrop-filter: blur(20px);
 }
 
 /* Header inside modals */
@@ -13,5 +12,5 @@
 /* Blur the background when a modal is open */
 .dialogBackdrop {
   background-color: color-mix(in srgb, var(--bg-main) 70%, transparent) !important;
-  backdrop-filter: blur(4px);
+  @apply backdrop-blur-sm !important;
 }

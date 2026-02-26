@@ -2,8 +2,7 @@
 .osdControls {
   /* Dark, blurred glass background for bottom controls */
   background: color-mix(in srgb, var(--bg-main) 70%, transparent) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  @apply backdrop-blur-md !important;
   @apply border-t border-neutral-800/50 pb-4 pt-2 !important;
 }
 
@@ -46,7 +45,6 @@
 }
 
 .osdControls .paper-icon-button-light:hover {
-  @apply opacity-100 scale-110 !important;
-  background-color: transparent !important;
+  @apply opacity-100 scale-110 bg-transparent !important;
   color: var(--accent) !important;
 }

@@ -11,9 +11,9 @@
 .emby-input:focus,
 .emby-textarea:focus,
 .emby-select:focus {
+  @apply outline-offset-0 !important;
   border-color: var(--accent) !important;
   outline: 1px solid var(--accent) !important;
-  outline-offset: 0px;
 }
 
 /* --- Checkboxes & Toggles --- */

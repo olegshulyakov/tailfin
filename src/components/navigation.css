@@ -1,16 +1,12 @@
 /* --- Top Header --- */
 .skinHeader, .skinHeader.skinHeader-withBackground {
   background-color: var(--bg-main) !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  @apply border-b border-transparent transition-all duration-300 !important;
+  @apply border-b border-transparent transition-all duration-300 bg-none shadow-none !important;
 }
 
 @media (max-width: 100em) {
 .withSectionTabs .headerTop {
-  padding-bottom: 0 !important;
+  @apply pb-0 !important;
 }
 }
 

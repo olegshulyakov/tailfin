@@ -4,8 +4,7 @@
 }
 
 .listItem:hover {
-  @apply rounded-xl !important;
-  background-color: var(--neutral-800) !important;
+  @apply rounded-xl bg-neutral-800 !important;
 }
 
 .listItem-border {
